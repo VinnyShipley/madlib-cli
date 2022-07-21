@@ -9,27 +9,26 @@ noun_one = input('I need a noun ')
 
 input_tuple = (adj_one, adj_two, noun_one)
 
-print(input_tuple)
+#print(input_tuple)
 
 #declaring regex to find inputs
 regex = r"(?<={).*?(?=})"
 
 # File manipulation
 with open ('assets/dark_and_story_night_template.txt') as file:
-  
-
   read_template = file.read().strip()
-print(read_template + 'read template')
+#print(read_template)
+file.close()
 
 
 speech_parts = re.findall(regex, read_template)
-print(speech_parts)
+#print(speech_parts)
 
 parsed_message = re.sub(regex,'', read_template)
-print(parsed_message + 'parsed message')
+#print(parsed_message)
 
 filled_message =  parsed_message.format(adj_one, adj_two, noun_one)
-print(filled_message + 'filled message')
+print(filled_message)
 
 def merge(b, **a):
   print(a)
@@ -37,6 +36,8 @@ def merge(b, **a):
   new_sentence = a.format(b)
   return new_sentence
 
+file = open('assets/dark_and_story_night_template.txt', 'w')
 
+n = file.write(filled_message)
 
-print(merge(parsed_message, input_tuple) + 'merged')
+file.close()
